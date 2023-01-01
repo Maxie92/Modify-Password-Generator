@@ -17,21 +17,26 @@ var specialCharacters = [' ', '!', '"', '#', '$', '%', '&', '(', ')', '*', '+', 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+function generatePassword () {
 enter = parseInt(prompt('Between 8 and 128, how long would you like your password to be?'));
 if (!enter) {
   alert('This needs a value');
 } else if (enter < 8 || enter > 128) {
-  enter = parseInt(prompt('You must choose between 8 and 128'))
+  enter = parseInt(prompt('You must choose between 8 and 128'));
+var password = [enter];
 } else {
   confirmUpperCase = confirm('Would you like to include Upper Case letters?');
-  confirmLowerCase = confirm('Would you like to include Lower Case letters?')
-  confirmNumbers = confirm('Would you like to include Numbers?')
-  confirmSpecialCharaters = confirm('Would you like to include Special Characters?')
-};
+  confirmLowerCase = confirm('Would you like to include Lower Case letters?');
+  confirmNumbers = confirm('Would you like to include Numbers?');
+  confirmSpecialCharaters = confirm('Would you like to include Special Characters?');
+}
 
 //If user doesn't choose any of the options
 if (!confirmUpperCase && !confirmLowerCase && !confirmNumbers && !confirmSpecialCharaters) {
-  choices = alert('Some options must be selected!')
+  choices = alert('Some options must be selected!');
 }
 //Different options for user choice.
 //If all four options are selected.
@@ -84,20 +89,24 @@ else if (confirmNumbers) {
 else if (confirmSpecialCharaters) {
   choices = specialCharacters;
 }
+// password variable is an array placeholder for user generated amount of length
+      // Empty string to be filled based on for loop selecting random characters from the array
+      var randomPassword = ""
+      
+      for (var i = 0; i < enter; i++) {
+        randomPassword = randomPassword + choices[Math.floor(Math.random() * choices.length)];
+        console.log(randomPassword)
+      }
+      return randomPassword;
 
-for (var i = 0; i < enter; i++) {
-  var pickChoices = choices[Math.floor(Math.random() * choices.length)];
-  password.generateBtn(pickChoices);
 }
 
 // Write password to the #password input
 function writePassword() {
+
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
