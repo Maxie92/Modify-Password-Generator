@@ -89,15 +89,14 @@ else if (confirmNumbers) {
 else if (confirmSpecialCharaters) {
   choices = specialCharacters;
 }
-// password variable is an array placeholder for user generated amount of length
-      // Empty string to be filled based on for loop selecting random characters from the array
-      var randomPassword = ""
+// Empty string to be filled based on for loop selecting random characters from the array
+  var userPassword = ""
       
       for (var i = 0; i < enter; i++) {
-        randomPassword = randomPassword + choices[Math.floor(Math.random() * choices.length)];
-        console.log(randomPassword)
+        userPassword = userPassword + choices[Math.floor(Math.random() * choices.length)];
+        console.log(userPassword)
       }
-      return randomPassword;
+      return userPassword;
 
 }
 
